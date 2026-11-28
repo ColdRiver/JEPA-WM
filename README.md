@@ -106,6 +106,53 @@ Continuous RGB Stream (640 x 480)
 
 ---
 
+## Results
+
+Outputs of the pipeline on a lab recording of a seated actor in a green-screen booth (reading a newspaper, reaching for objects on the table, standing up).
+
+### Stage 2: Surprise-Gated Episode Segmentation
+
+Surprise $S_t$ (blue) and adaptive z-score (orange) over the stream. Green bands are the episodes written to memory; idle periods are skipped.
+
+![Stage 2 surprise timeline with stored episodes](Screenshot%202026-11-28%20055923.png)
+
+**Episode storyboard.** Start, peak-interaction and end frames for each stored episode, with timestamps, durations and peak surprise.
+
+![Episode storyboard, episodes 0-2](Screenshot%202026-11-28%20102944.png)
+
+<details>
+<summary>More episodes (#2 to #28)</summary>
+
+| | |
+| :---: | :---: |
+| ![Episodes 2-4](Screenshot%202026-11-28%20102954.png) | ![Episodes 4-6](Screenshot%202026-11-28%20102959.png) |
+| Episodes #2 to #4 | Episodes #4 to #6 |
+| ![Episodes 6-8](Screenshot%202026-11-28%20103013.png) | ![Episodes 8-10](Screenshot%202026-11-28%20103016.png) |
+| Episodes #6 to #8 | Episodes #8 to #10 |
+| ![Episodes 10-12](Screenshot%202026-11-28%20103021.png) | ![Episodes 18-20](Screenshot%202026-11-28%20103035.png) |
+| Episodes #10 to #12 | Episodes #18 to #20 |
+| ![Episodes 26-28](Screenshot%202026-11-28%20103044.png) | |
+| Episodes #26 to #28 | |
+
+</details>
+
+### Stage 3: Object Localisation and Tracking
+
+Tracked bounding box of the manipulated object (`newspaper`) across the frames of each episode.
+
+| | |
+| :---: | :---: |
+| ![Stage 3 tracking, episodes 0-2](src/Screenshot%202026-11-28%20103357.png) | ![Stage 3 tracking, episodes 3-5](src/Screenshot%202026-11-28%20103404.png) |
+| Episodes #0 to #2 | Episodes #3 to #5 |
+
+### Stage 5: Query Grounding
+
+Query *"Which is the last newspaper or paper I used?"* at $T_{\text{query}} = 30.0$ s retrieves episode #3 (`READ 'newspaper'`, timeframe [28.119, 29.42] s) and returns the live 2D box and metric 3D position.
+
+![Stage 5 query grounding output](src/Screenshot%202026-11-28%20103610.png)
+
+---
+
 ## Requirements & Installation
 
 Designed to run in **FP16 mixed precision** on a single **16 GB NVIDIA T4 GPU** (e.g., Kaggle or Google Colab).
