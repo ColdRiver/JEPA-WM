@@ -14,6 +14,8 @@ This repository implements the **perception, episodic memory, and action-embeddi
 * **Metric 3D Spatial Grounding**: Estimates pixel-aligned physical depth via Depth-Anything-V2 and back-projects object centroids using Intel RealSense D435i pinhole intrinsics.
 * **Query-Conditioned Action Embeddings**: Retrieves relevant historical timeframes via cross-attention over memory nodes and processes the retrieved tokens through a Query-Conditioned Vision Transformer (`QueryConditionedActionViT`) to generate a 512-dim action embedding and live-frame spatial specification.
 
+
+link to kaggle notebook: https://www.kaggle.com/code/steelbeast/vjepa-model
 ---
 
 ## Theoretical Foundations
